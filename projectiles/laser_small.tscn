@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://csrvnii1n6d08"]
 
 [ext_resource type="Texture2D" uid="uid://b6kt3a83jq7eq" path="res://assets/laser_small.png" id="1_cfd3s"]
+[ext_resource type="Script" uid="uid://negu0qmpctbg" path="res://projectiles/laser_small.gd" id="1_jkbhu"]
 [ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="2_jkbhu"]
 
 [node name="laser_small" type="Node2D" unique_id=358141870]
+script = ExtResource("1_jkbhu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=412909944]
 texture = ExtResource("1_cfd3s")
@@ -13,3 +15,6 @@ script = ExtResource("2_jkbhu")
 velocity = Vector2(0, -200)
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://d2cbxrnm7qw6t"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1606503342]
+rect = Rect2(-2, -3, 4, 8)
