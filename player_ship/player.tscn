@@ -8,6 +8,58 @@
 [ext_resource type="Script" uid="uid://dwtk105scae4v" path="res://addons/components/position_clamp_component.gd" id="5_pq0xr"]
 [ext_resource type="Script" uid="uid://pq4c2fm8knyx" path="res://addons/components/spawner_component.gd" id="7_37oiy"]
 [ext_resource type="PackedScene" uid="uid://csrvnii1n6d08" path="res://projectiles/laser_small.tscn" id="8_r1usx"]
+[ext_resource type="Script" uid="uid://bw80mt7mne8im" path="res://addons/components/scale_component.gd" id="9_r1usx"]
+[ext_resource type="Texture2D" uid="uid://janiwiov5dgi" path="res://assets/ship_flame.png" id="10_nk04t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0qn0"]
+atlas = ExtResource("10_nk04t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyv4o"]
+atlas = ExtResource("10_nk04t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmqbp"]
+atlas = ExtResource("10_nk04t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brxss"]
+atlas = ExtResource("10_nk04t")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22nkp"]
+atlas = ExtResource("10_nk04t")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dub2"]
+atlas = ExtResource("10_nk04t")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j43v4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0qn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyv4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmqbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brxss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22nkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dub2")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkba1"]
 atlas = ExtResource("1_e7m1w")
@@ -51,7 +103,16 @@ animations = [{
 [node name="player" type="Node2D" unique_id=590352291]
 script = ExtResource("1_i3324")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1608213280]
+[node name="Anchor" type="Node2D" parent="." unique_id=1863187543]
+
+[node name="FlameAnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor" unique_id=264198649]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_j43v4")
+autoplay = "default"
+frame = 1
+frame_progress = 0.64852804
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor" unique_id=1608213280]
 sprite_frames = SubResource("SpriteFrames_mmhao")
 animation = &"center"
 autoplay = "center"
@@ -86,3 +147,8 @@ metadata/_custom_type_script = "uid://pq4c2fm8knyx"
 [node name="FireRateTimer" type="Timer" parent="." unique_id=636146561]
 wait_time = 0.4
 autostart = true
+
+[node name="ScaleComponent" type="Node" parent="." unique_id=1655457618 node_paths=PackedStringArray("sprite")]
+script = ExtResource("9_r1usx")
+sprite = NodePath("../Anchor")
+metadata/_custom_type_script = "uid://bw80mt7mne8im"
