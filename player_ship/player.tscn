@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cv7cfvux027yu"]
 
 [ext_resource type="Texture2D" uid="uid://bd25lbg3tltjd" path="res://assets/ship.png" id="1_e7m1w"]
+[ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="2_wkba1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkba1"]
 atlas = ExtResource("1_e7m1w")
@@ -45,4 +46,10 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1608213280]
 sprite_frames = SubResource("SpriteFrames_mmhao")
-animation = &"bank_left"
+animation = &"center"
+autoplay = "center"
+
+[node name="MoveComponent" type="Node" parent="." unique_id=1999398342 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_wkba1")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://d2cbxrnm7qw6t"
