@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://cv7cfvux027yu"]
 
 [ext_resource type="Texture2D" uid="uid://bd25lbg3tltjd" path="res://assets/ship.png" id="1_e7m1w"]
+[ext_resource type="Script" uid="uid://bpb6t4mhxvcis" path="res://player_ship/player.gd" id="1_i3324"]
 [ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="2_wkba1"]
 [ext_resource type="Script" uid="uid://ducrctiek6mef" path="res://components/move_input_component.gd" id="3_bf8tt"]
 [ext_resource type="Resource" uid="uid://daeeifekqmrll" path="res://player_ship/player_move_stats.tres" id="4_4an4a"]
 [ext_resource type="Script" uid="uid://dwtk105scae4v" path="res://addons/components/position_clamp_component.gd" id="5_pq0xr"]
+[ext_resource type="Script" uid="uid://pq4c2fm8knyx" path="res://addons/components/spawner_component.gd" id="7_37oiy"]
+[ext_resource type="PackedScene" uid="uid://csrvnii1n6d08" path="res://projectiles/laser_small.tscn" id="8_r1usx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkba1"]
 atlas = ExtResource("1_e7m1w")
@@ -46,6 +49,7 @@ animations = [{
 }]
 
 [node name="player" type="Node2D" unique_id=590352291]
+script = ExtResource("1_i3324")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1608213280]
 sprite_frames = SubResource("SpriteFrames_mmhao")
@@ -67,3 +71,18 @@ metadata/_custom_type_script = "uid://ducrctiek6mef"
 script = ExtResource("5_pq0xr")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://dwtk105scae4v"
+
+[node name="LeftMuzzle" type="Marker2D" parent="." unique_id=2101346096]
+position = Vector2(-5, -4)
+
+[node name="RightMuzzle" type="Marker2D" parent="." unique_id=1352141267]
+position = Vector2(5, -4)
+
+[node name="SpawnerComponent" type="Node2D" parent="." unique_id=852823164]
+script = ExtResource("7_37oiy")
+scene = ExtResource("8_r1usx")
+metadata/_custom_type_script = "uid://pq4c2fm8knyx"
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=636146561]
+wait_time = 0.4
+autostart = true
