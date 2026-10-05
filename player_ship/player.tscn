@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bd25lbg3tltjd" path="res://assets/ship.png" id="1_e7m1w"]
 [ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="2_wkba1"]
+[ext_resource type="Script" uid="uid://ducrctiek6mef" path="res://components/move_input_component.gd" id="3_bf8tt"]
+[ext_resource type="Resource" uid="uid://daeeifekqmrll" path="res://player_ship/player_move_stats.tres" id="4_4an4a"]
+[ext_resource type="Script" uid="uid://dwtk105scae4v" path="res://addons/components/position_clamp_component.gd" id="5_pq0xr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkba1"]
 atlas = ExtResource("1_e7m1w")
@@ -53,3 +56,14 @@ autoplay = "center"
 script = ExtResource("2_wkba1")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://d2cbxrnm7qw6t"
+
+[node name="MoveInputComponent" type="Node" parent="." unique_id=296181296 node_paths=PackedStringArray("move_component")]
+script = ExtResource("3_bf8tt")
+move_stat = ExtResource("4_4an4a")
+move_component = NodePath("../MoveComponent")
+metadata/_custom_type_script = "uid://ducrctiek6mef"
+
+[node name="PositionClampComponent" type="Node2D" parent="." unique_id=2036453380 node_paths=PackedStringArray("actor")]
+script = ExtResource("5_pq0xr")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://dwtk105scae4v"
