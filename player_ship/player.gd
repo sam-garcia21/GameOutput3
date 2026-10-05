@@ -8,6 +8,7 @@ extends Node2D
 @onready var scale_component: ScaleComponent = $ScaleComponent as ScaleComponent
 @onready var move_component: MoveComponent = $MoveComponent as MoveComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $Anchor/AnimatedSprite2D
+@onready var flame_animated_sprite_2d: AnimatedSprite2D = $Anchor/FlameAnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,8 +26,11 @@ func _process(delta: float) -> void:
 func animate_the_ship() -> void:
 	if move_component.velocity.x < 0:
 		animated_sprite_2d.play("bank_left")
+		flame_animated_sprite_2d.play("bank_left")
 	elif move_component.velocity.x > 0:
 		animated_sprite_2d.play("bank_right")
+		flame_animated_sprite_2d.play("bank_right")
 	else:
 		animated_sprite_2d.play("center")
+		flame_animated_sprite_2d.play("center")
 	pass

@@ -15,25 +15,25 @@
 atlas = ExtResource("10_nk04t")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyv4o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_brxss"]
 atlas = ExtResource("10_nk04t")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmqbp"]
 atlas = ExtResource("10_nk04t")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_brxss"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dub2"]
 atlas = ExtResource("10_nk04t")
-region = Rect2(0, 16, 16, 16)
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyv4o"]
+atlas = ExtResource("10_nk04t")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22nkp"]
 atlas = ExtResource("10_nk04t")
 region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0dub2"]
-atlas = ExtResource("10_nk04t")
-region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j43v4"]
 animations = [{
@@ -42,23 +42,33 @@ animations = [{
 "texture": SubResource("AtlasTexture_n0qn0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fyv4o")
+"texture": SubResource("AtlasTexture_brxss")
+}],
+"loop": 1,
+"name": &"bank_left",
+"speed": 10.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nmqbp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_brxss")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_22nkp")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0dub2")
 }],
 "loop": 1,
-"name": &"default",
-"speed": 12.0
+"name": &"bank_right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyv4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22nkp")
+}],
+"loop": 1,
+"name": &"center",
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkba1"]
@@ -108,9 +118,8 @@ script = ExtResource("1_i3324")
 [node name="FlameAnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor" unique_id=264198649]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_j43v4")
-autoplay = "default"
-frame = 1
-frame_progress = 0.64852804
+animation = &"center"
+autoplay = "center"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor" unique_id=1608213280]
 sprite_frames = SubResource("SpriteFrames_mmhao")
