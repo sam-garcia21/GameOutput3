@@ -62,7 +62,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func take_damage() -> void:
 	health -= 1
 	damage_taken.emit()
-	if health == 0:
+	if health <= 0:
 		flame_animated_sprite_2d.visible = false
 		animated_sprite_2d.visible = false
 		explosion.visible = true
@@ -71,10 +71,10 @@ func take_damage() -> void:
 		explosion.visible = false
 	else :
 		var tween = get_tree().create_tween()
-		area_2d.monitoring = false
-		tween.tween_property(animated_sprite_2d, "modulate", Color(18.892, 18.892, 18.892), 0.35).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN)
-		tween.tween_property(animated_sprite_2d, "modulate", Color(1, 1, 1), 0.05).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		area_2d.set_deferred("monitoring", false)
+		tween.tween_property(animated_sprite_2d, "modulate", Color(10, 10, 10), 0.9).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN)
+		tween.tween_property(animated_sprite_2d, "modulate", Color(1, 1, 1), 0.1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		scale_component.tween_scale()
 		await tween.finished
-		area_2d.monitoring = true
+		area_2d.set_deferred("monitoring", true)
 	
