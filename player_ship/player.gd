@@ -21,6 +21,11 @@ func fireLasers() -> void:
 	scale_component.tween_scale()
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_select"):
+		#fire_rate_timer.emit_signal("timeout")
+		fire_rate_timer.start()
+	if Input.is_action_just_released("ui_select"):
+		fire_rate_timer.stop()
 	animate_the_ship()
 
 func animate_the_ship() -> void:

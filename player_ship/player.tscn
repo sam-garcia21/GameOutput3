@@ -155,7 +155,6 @@ metadata/_custom_type_script = "uid://pq4c2fm8knyx"
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=636146561]
 wait_time = 0.4
-autostart = true
 
 [node name="ScaleComponent" type="Node" parent="." unique_id=1655457618 node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_r1usx")
