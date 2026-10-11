@@ -76,7 +76,7 @@ func take_damage() -> void:
 		explosion.play()
 		await explosion.animation_finished
 		explosion.visible = false
-	else :
+	elif health > 0:
 		hit_sound.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property(animated_sprite_2d, "modulate", Color(10, 10, 10), 0.9).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN)

@@ -4,6 +4,7 @@ const HP_BAR_SIZE_X = 95
 
 @onready var player: Node = $player
 @onready var enemy_generator: Node = $enemygenerator
+@onready var enemy_generator2: Node = $enemygenerator2
 @onready var hp: Control = $HP
 @onready var hp_text: Label = $HP/Text
 @onready var hp_bar: ColorRect = $HP/ColorRect
@@ -17,6 +18,7 @@ func reset():
 	player.reset()
 	player.position = Vector2(80.0, 216.0)
 	enemy_generator.start()
+	enemy_generator2.start()
 	game_over_screen.visible = false
 	hp.visible = true
 	hp_text.text = "HP: " + str(player.health)
@@ -28,6 +30,7 @@ func _on_player_damage_taken() -> void:
 		game_over_screen.visible = true
 		hp.visible = false
 		enemy_generator.stop()
+		enemy_generator2.stop()
 		get_tree().call_group("enemies", "queue_free")
 		get_tree().call_group("enemy_projectiles", "queue_free")
 		get_tree().call_group("player_projectiles", "queue_free")

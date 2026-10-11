@@ -35,7 +35,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func take_damage() -> void:
 	health -= 1
 	area_2d.set_deferred("monitoring", false)
-	if health <= 0:
+	if health == 0:
 		area_2d.set_deferred("monitorable", false)
 		fire_rate_timer.stop()
 		animated_sprite_2d.visible = false
@@ -45,7 +45,7 @@ func take_damage() -> void:
 		await explosion.animation_finished
 		explosion.visible = false
 		queue_free()
-	else :
+	elif health > 0 :
 		hit_sound.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property(animated_sprite_2d, "modulate", Color(10, 10, 10), 0.3).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN)

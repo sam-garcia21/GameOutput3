@@ -15,7 +15,17 @@ position = Vector2(80, 216)
 
 [node name="SpaceBackground" parent="." unique_id=441179517 instance=ExtResource("2_fj7yv")]
 
-[node name="enemygenerator" parent="." unique_id=1990990173 instance=ExtResource("4_aqk2v")]
+[node name="enemygenerator2" parent="." unique_id=1990990173 instance=ExtResource("4_aqk2v")]
+min_y = 80
+max_y = 100
+min_wait = 4
+max_wait = 6
+
+[node name="enemygenerator" parent="." unique_id=270152461 instance=ExtResource("4_aqk2v")]
+min_y = 40
+max_y = 70
+min_wait = 1
+max_wait = 4
 
 [node name="HP" type="Control" parent="." unique_id=932027243]
 layout_mode = 3
