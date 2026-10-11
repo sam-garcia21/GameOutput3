@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cdp4lb4u3su36"]
+
+[ext_resource type="Script" uid="uid://bc8xh0aamykfg" path="res://enemygenerator.gd" id="1_1fl06"]
+[ext_resource type="Script" uid="uid://pq4c2fm8knyx" path="res://addons/components/spawner_component.gd" id="1_6ux1h"]
+
+[node name="enemygenerator" type="Node2D" unique_id=1990990173]
+script = ExtResource("1_1fl06")
+
+[node name="SpawnerComponent" type="Node2D" parent="." unique_id=1467831430]
+script = ExtResource("1_6ux1h")
+metadata/_custom_type_script = "uid://pq4c2fm8knyx"
+
+[node name="enemyspawntimer" type="Timer" parent="." unique_id=2130582982]
+wait_time = 2.5
+one_shot = true
+autostart = true

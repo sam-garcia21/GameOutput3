@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bihjarcpafeny"]
+
+[ext_resource type="Texture2D" uid="uid://c5sltsm7od8am" path="res://assets/pink_enemy_projectile.png" id="1_h0q4c"]
+[ext_resource type="Script" uid="uid://hlkr6u2uij64" path="res://projectiles/enemyorb.gd" id="1_t6wuq"]
+[ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="2_t6wuq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1el6"]
+atlas = ExtResource("1_h0q4c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muha1"]
+atlas = ExtResource("1_h0q4c")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy3x1"]
+atlas = ExtResource("1_h0q4c")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px4tw"]
+atlas = ExtResource("1_h0q4c")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mj0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1el6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muha1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hy3x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px4tw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemyorb" type="Node2D" unique_id=214715474]
+script = ExtResource("1_t6wuq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=601828265]
+sprite_frames = SubResource("SpriteFrames_2mj0u")
+autoplay = "default"
+
+[node name="MoveComponent" type="Node" parent="." unique_id=1215320335 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_t6wuq")
+velocity = Vector2(0, 100)
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://d2cbxrnm7qw6t"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1089994022]

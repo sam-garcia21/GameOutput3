@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bwympcb05ns2e"]
+
+[ext_resource type="Texture2D" uid="uid://deediejc5viau" path="res://assets/pink_enemy.png" id="1_2mvqj"]
+[ext_resource type="Script" uid="uid://c1yq4ephixyrd" path="res://enemy/enemy.gd" id="1_p200p"]
+[ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="3_pmsee"]
+[ext_resource type="Script" uid="uid://pq4c2fm8knyx" path="res://addons/components/spawner_component.gd" id="4_1wwld"]
+[ext_resource type="PackedScene" uid="uid://bihjarcpafeny" path="res://projectiles/enemyorb.tscn" id="5_pmsee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofsxj"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppra6"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p200p"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmsee"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wwld"]
+atlas = ExtResource("1_2mvqj")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mj0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofsxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppra6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p200p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmsee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wwld")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemy" type="Node2D" unique_id=2045290781]
+script = ExtResource("1_p200p")
+
+[node name="Anchor" type="Node2D" parent="." unique_id=1348443760]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor" unique_id=1945630705]
+sprite_frames = SubResource("SpriteFrames_2mj0u")
+autoplay = "default"
+
+[node name="MoveComponent" type="Node" parent="." unique_id=894394627 node_paths=PackedStringArray("actor")]
+script = ExtResource("3_pmsee")
+velocity = Vector2(30, 0)
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://d2cbxrnm7qw6t"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=733448986]
+
+[node name="SpawnerComponent" type="Node2D" parent="." unique_id=1324456073]
+script = ExtResource("4_1wwld")
+scene = ExtResource("5_pmsee")
+metadata/_custom_type_script = "uid://pq4c2fm8knyx"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1977353403]
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=455527653]
+autostart = true
