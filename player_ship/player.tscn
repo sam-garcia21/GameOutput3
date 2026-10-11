@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://csrvnii1n6d08" path="res://projectiles/laser_small.tscn" id="8_r1usx"]
 [ext_resource type="Script" uid="uid://bw80mt7mne8im" path="res://addons/components/scale_component.gd" id="9_r1usx"]
 [ext_resource type="Texture2D" uid="uid://janiwiov5dgi" path="res://assets/ship_flame.png" id="10_nk04t"]
+[ext_resource type="AudioStream" uid="uid://2lve2qd3ghca" path="res://sounds/hit_sound.wav" id="12_brxss"]
+[ext_resource type="AudioStream" uid="uid://bu7m85w0adnqo" path="res://sounds/laser_sound.wav" id="12_fyv4o"]
+[ext_resource type="AudioStream" uid="uid://bpxd8q7olg2jt" path="res://sounds/explosion_sound.wav" id="14_22nkp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0qn0"]
 atlas = ExtResource("10_nk04t")
@@ -217,5 +220,15 @@ metadata/_custom_type_script = "uid://bw80mt7mne8im"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1715055050]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ax885")
+
+[node name="hit_sound" type="AudioStreamPlayer" parent="." unique_id=768519841]
+stream = ExtResource("12_brxss")
+
+[node name="laser_sound" type="AudioStreamPlayer" parent="." unique_id=1870569738]
+stream = ExtResource("12_fyv4o")
+volume_db = 2.0
+
+[node name="explosion_sound" type="AudioStreamPlayer" parent="." unique_id=543653900]
+stream = ExtResource("14_22nkp")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

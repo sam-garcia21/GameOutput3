@@ -10,6 +10,9 @@ extends Node2D
 @onready var fire_rate_timer: Timer = $FireRateTimer
 @onready var area_2d: Area2D = $Area2D
 @onready var explosion: AnimatedSprite2D = $Anchor/ExplosionAnimation
+@onready var laser_sound: AudioStreamPlayer = $laser_sound
+@onready var hit_sound: AudioStreamPlayer = $hit_sound
+@onready var explosion_sound: AudioStreamPlayer = $explosion_sound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +20,7 @@ func _ready() -> void:
 	visible_on_screen_notifier_2d.screen_exited.connect(queue_free)
 	
 func fireOrbs() -> void:
+	laser_sound.play()
 	spawner_component.spawn(marker_2d.global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,17 +34,20 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func take_damage() -> void:
 	health -= 1
+	area_2d.set_deferred("monitoring", false)
 	if health <= 0:
+		area_2d.set_deferred("monitorable", false)
 		fire_rate_timer.stop()
 		animated_sprite_2d.visible = false
 		explosion.visible = true
+		explosion_sound.play()
 		explosion.play()
 		await explosion.animation_finished
 		explosion.visible = false
 		queue_free()
 	else :
+		hit_sound.play()
 		var tween = get_tree().create_tween()
-		area_2d.set_deferred("monitoring", false)
 		tween.tween_property(animated_sprite_2d, "modulate", Color(10, 10, 10), 0.3).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN)
 		tween.tween_property(animated_sprite_2d, "modulate", Color(1, 1, 1), 0.01).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		await tween.finished

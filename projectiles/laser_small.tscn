@@ -3,6 +3,50 @@
 [ext_resource type="Texture2D" uid="uid://b6kt3a83jq7eq" path="res://assets/laser_small.png" id="1_cfd3s"]
 [ext_resource type="Script" uid="uid://negu0qmpctbg" path="res://projectiles/laser_small.gd" id="1_jkbhu"]
 [ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="2_jkbhu"]
+[ext_resource type="Texture2D" uid="uid://bwrsrv458tufr" path="res://assets/explosion.png" id="3_qa5df"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfgaj"]
+atlas = ExtResource("3_qa5df")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2thr"]
+atlas = ExtResource("3_qa5df")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f0s6"]
+atlas = ExtResource("3_qa5df")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c743"]
+atlas = ExtResource("3_qa5df")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i15vq"]
+atlas = ExtResource("3_qa5df")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_maduc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfgaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2thr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f0s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c743")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i15vq")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ax885"]
 size = Vector2(4, 8)
@@ -12,6 +56,12 @@ script = ExtResource("1_jkbhu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=412909944]
 texture = ExtResource("1_cfd3s")
+
+[node name="ExplosionAnimation" type="AnimatedSprite2D" parent="." unique_id=1843303267]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_maduc")
+frame = 4
+frame_progress = 1.0
 
 [node name="MoveComponent" type="Node" parent="." unique_id=1371772785 node_paths=PackedStringArray("actor")]
 script = ExtResource("2_jkbhu")

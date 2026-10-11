@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dvwnit5wccty5" path="res://effects/space_background.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://3u2plemonfcb" path="res://enemygenerator.tscn" id="4_aqk2v"]
 [ext_resource type="FontFile" uid="uid://7hl5xnwgvd1f" path="res://fonts/kenney_mini_square.ttf" id="5_dwbse"]
+[ext_resource type="AudioStream" uid="uid://wdcvw8042dsc" path="res://sounds/music.ogg" id="6_dwbse"]
 
 [node name="World" type="Node2D" unique_id=426943403]
 script = ExtResource("1_dwbse")
@@ -57,6 +58,12 @@ offset_bottom = 129.0
 theme_override_fonts/font = ExtResource("5_dwbse")
 theme_override_font_sizes/font_size = 12
 text = "Try Again?"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=2074847723]
+stream = ExtResource("6_dwbse")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="damage_taken" from="player" to="." method="_on_player_damage_taken"]
 [connection signal="pressed" from="Game_Over/Button" to="." method="_on_button_pressed"]

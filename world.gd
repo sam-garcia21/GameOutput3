@@ -4,6 +4,7 @@ extends Node2D
 @onready var enemy_generator: Node = $enemygenerator
 @onready var hp_bar: Label = $HP
 @onready var game_over_screen: Control = $Game_Over
+@onready var music: AudioStreamPlayer = $Music
 
 func _ready() -> void:
 	hp_bar.text = "HP: " + str(player.health)
@@ -15,6 +16,7 @@ func reset():
 	game_over_screen.visible = false
 	hp_bar.visible = true
 	hp_bar.text = "HP: " + str(player.health)
+	music.play()
 
 func _on_player_damage_taken() -> void:
 	if (player.health == 0):
@@ -24,6 +26,7 @@ func _on_player_damage_taken() -> void:
 		get_tree().call_group("enemies", "queue_free")
 		get_tree().call_group("enemy_projectiles", "queue_free")
 		get_tree().call_group("player_projectiles", "queue_free")
+		music.stop()
 		
 	else:
 		hp_bar.text = "HP: " + str(player.health)
