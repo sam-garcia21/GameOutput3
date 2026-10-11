@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://3u2plemonfcb"]
 
-[ext_resource type="Script" path="res://enemygenerator.gd" id="1_1fl06"]
+[ext_resource type="Script" uid="uid://dmw5jlc03otp6" path="res://enemygenerator.gd" id="1_1fl06"]
 [ext_resource type="Script" uid="uid://pq4c2fm8knyx" path="res://addons/components/spawner_component.gd" id="1_6ux1h"]
+[ext_resource type="PackedScene" uid="uid://bwympcb05ns2e" path="res://enemy/enemy.tscn" id="2_4auov"]
 
 [node name="enemygenerator" type="Node2D" unique_id=1990990173]
 script = ExtResource("1_1fl06")
+EnemyScene = ExtResource("2_4auov")
 
 [node name="SpawnerComponent" type="Node2D" parent="." unique_id=1467831430]
 script = ExtResource("1_6ux1h")

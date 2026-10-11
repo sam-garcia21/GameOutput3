@@ -1,10 +1,27 @@
-[gd_scene format=3 uid="uid://cdp4lb4u3su36"]
+[gd_scene format=3 uid="uid://bpsf1cprcavwt"]
 
-[ext_resource type="Script" uid="uid://bc8xh0aamykfg" path="res://enemygenerator.gd" id="1_1fl06"]
 [ext_resource type="Script" uid="uid://pq4c2fm8knyx" path="res://addons/components/spawner_component.gd" id="1_6ux1h"]
 
+[sub_resource type="GDScript" id="GDScript_plxdq"]
+script/source = "extends Node2D
+
+
+
+@onready var spawner_component: = $SpawnerComponent as SpawnerComponent
+@onready var enemy_spawn_timer: Timer = $enemyspawntimer
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	enemy_spawn_timer.timeout.connect(handle_spawn)
+
+func handle_spawn(enemy_scene: PackedScene, timer: Timer) -> void:
+	spawner_component.scene = enemy_scene
+	spawner_component.spawn(Vector2(-10,randf_range(20,80)))
+	timer.start()
+"
+
 [node name="enemygenerator" type="Node2D" unique_id=1990990173]
-script = ExtResource("1_1fl06")
+script = SubResource("GDScript_plxdq")
 
 [node name="SpawnerComponent" type="Node2D" parent="." unique_id=1467831430]
 script = ExtResource("1_6ux1h")

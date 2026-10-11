@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="2_wkba1"]
 [ext_resource type="Script" uid="uid://ducrctiek6mef" path="res://components/move_input_component.gd" id="3_bf8tt"]
 [ext_resource type="Resource" uid="uid://daeeifekqmrll" path="res://player_ship/player_move_stats.tres" id="4_4an4a"]
+[ext_resource type="Texture2D" uid="uid://bwrsrv458tufr" path="res://assets/explosion.png" id="4_n0qn0"]
 [ext_resource type="Script" uid="uid://dwtk105scae4v" path="res://addons/components/position_clamp_component.gd" id="5_pq0xr"]
 [ext_resource type="Script" uid="uid://pq4c2fm8knyx" path="res://addons/components/spawner_component.gd" id="7_37oiy"]
 [ext_resource type="PackedScene" uid="uid://csrvnii1n6d08" path="res://projectiles/laser_small.tscn" id="8_r1usx"]
@@ -110,6 +111,49 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfgaj"]
+atlas = ExtResource("4_n0qn0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2thr"]
+atlas = ExtResource("4_n0qn0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f0s6"]
+atlas = ExtResource("4_n0qn0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c743"]
+atlas = ExtResource("4_n0qn0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i15vq"]
+atlas = ExtResource("4_n0qn0")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7cc1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfgaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2thr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f0s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c743")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i15vq")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ax885"]
 size = Vector2(6, 9)
 
@@ -128,6 +172,10 @@ autoplay = "center"
 sprite_frames = SubResource("SpriteFrames_mmhao")
 animation = &"center"
 autoplay = "center"
+
+[node name="ExplosionAnimation" type="AnimatedSprite2D" parent="Anchor" unique_id=866119999]
+visible = false
+sprite_frames = SubResource("SpriteFrames_a7cc1")
 
 [node name="MoveComponent" type="Node" parent="." unique_id=1999398342 node_paths=PackedStringArray("actor")]
 script = ExtResource("2_wkba1")

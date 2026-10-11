@@ -13,3 +13,9 @@ func handle_spawn(enemy_scene: PackedScene, timer: Timer) -> void:
 	spawner_component.scene = enemy_scene
 	spawner_component.spawn(Vector2(-10,randf_range(20,80)))
 	timer.start()
+
+func start() -> void:
+	enemy_spawn_timer.start()
+	
+func stop() -> void:
+	enemy_spawn_timer.stop()

@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var health = 3
+
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var move_component: MoveComponent = $MoveComponent as MoveComponent
 @onready var spawner_component: SpawnerComponent = $SpawnerComponent as SpawnerComponent
