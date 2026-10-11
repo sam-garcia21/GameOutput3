@@ -110,6 +110,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax885"]
+size = Vector2(6, 9)
+
 [node name="player" type="Node2D" unique_id=590352291]
 script = ExtResource("1_i3324")
 
@@ -160,3 +163,11 @@ wait_time = 0.4
 script = ExtResource("9_r1usx")
 sprite = NodePath("../Anchor")
 metadata/_custom_type_script = "uid://bw80mt7mne8im"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=942570503]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1715055050]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ax885")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

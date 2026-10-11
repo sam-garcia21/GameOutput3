@@ -49,7 +49,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="enemy" type="Node2D" unique_id=2045290781]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax885"]
+size = Vector2(10, 9)
+
+[node name="enemy" type="Node2D" unique_id=2045290781 groups=["enemies"]]
 script = ExtResource("1_p200p")
 
 [node name="Anchor" type="Node2D" parent="." unique_id=1348443760]
@@ -75,3 +78,9 @@ metadata/_custom_type_script = "uid://pq4c2fm8knyx"
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=455527653]
 autostart = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=255607507]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=624084955]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ax885")

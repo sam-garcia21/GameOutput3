@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://da1gyi3kvueoq"]
 
+[ext_resource type="Script" uid="uid://bkx1cfxm5b07a" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://cv7cfvux027yu" path="res://player_ship/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://dvwnit5wccty5" path="res://effects/space_background.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://bwympcb05ns2e" path="res://enemy/enemy.tscn" id="3_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://3u2plemonfcb" path="res://enemygenerator.tscn" id="4_aqk2v"]
+[ext_resource type="FontFile" uid="uid://7hl5xnwgvd1f" path="res://fonts/kenney_mini_square.ttf" id="5_dwbse"]
 
 [node name="World" type="Node2D" unique_id=426943403]
+script = ExtResource("1_dwbse")
 
 [node name="player" parent="." unique_id=590352291 instance=ExtResource("1_f3sb7")]
 position = Vector2(80, 216)
@@ -14,3 +17,43 @@ position = Vector2(80, 216)
 
 [node name="enemygenerator" parent="." unique_id=1990990173 instance=ExtResource("4_aqk2v")]
 EnemyScene = ExtResource("3_aqk2v")
+
+[node name="HP" type="Label" parent="." unique_id=22104067]
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 53.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("5_dwbse")
+text = "HP: "
+
+[node name="Game_Over" type="Control" parent="." unique_id=2081144268]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 158.0
+offset_bottom = 243.0
+
+[node name="ColorRect" type="ColorRect" parent="Game_Over" unique_id=617918015]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 241.0
+color = Color(0.059671316, 0.059671316, 0.059671316, 0.5254902)
+
+[node name="Label" type="Label" parent="Game_Over" unique_id=1531450456]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 82.0
+offset_right = 124.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("5_dwbse")
+text = "Game Over"
+
+[node name="Button" type="Button" parent="Game_Over" unique_id=763921475]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 106.0
+offset_right = 117.0
+offset_bottom = 129.0
+theme_override_fonts/font = ExtResource("5_dwbse")
+theme_override_font_sizes/font_size = 12
+text = "Try Again?"

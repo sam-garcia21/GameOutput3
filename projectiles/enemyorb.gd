@@ -6,3 +6,8 @@ extends Node2D
 func _ready() -> void:
 	# Ensures orbs get deleted when off screen to save memory
 	visible_on_screen_notifier_2d.screen_exited.connect(queue_free)
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.owner is Player:
+		queue_free()

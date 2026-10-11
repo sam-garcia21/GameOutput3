@@ -4,7 +4,10 @@
 [ext_resource type="Script" uid="uid://negu0qmpctbg" path="res://projectiles/laser_small.gd" id="1_jkbhu"]
 [ext_resource type="Script" uid="uid://d2cbxrnm7qw6t" path="res://components/move_component.gd" id="2_jkbhu"]
 
-[node name="laser_small" type="Node2D" unique_id=358141870]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax885"]
+size = Vector2(4, 8)
+
+[node name="laser_small" type="Node2D" unique_id=358141870 groups=["player_projectiles"]]
 script = ExtResource("1_jkbhu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=412909944]
@@ -18,3 +21,9 @@ metadata/_custom_type_script = "uid://d2cbxrnm7qw6t"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1606503342]
 rect = Rect2(-2, -3, 4, 8)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=260522957]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1433496414]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ax885")

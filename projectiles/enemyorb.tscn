@@ -40,7 +40,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="enemyorb" type="Node2D" unique_id=214715474]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax885"]
+size = Vector2(6, 6)
+
+[node name="enemyorb" type="Node2D" unique_id=214715474 groups=["enemy_projectiles"]]
 script = ExtResource("1_t6wuq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=601828265]
@@ -54,3 +57,10 @@ actor = NodePath("..")
 metadata/_custom_type_script = "uid://d2cbxrnm7qw6t"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1089994022]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1902650972]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=146592383]
+shape = SubResource("RectangleShape2D_ax885")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
