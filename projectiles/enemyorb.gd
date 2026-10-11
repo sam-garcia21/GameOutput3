@@ -9,5 +9,5 @@ func _ready() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.owner is Player:
+	if area.owner is Player or area.owner.is_in_group("player_projectiles"):
 		queue_free()
