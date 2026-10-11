@@ -17,14 +17,28 @@ position = Vector2(80, 216)
 
 [node name="enemygenerator" parent="." unique_id=1990990173 instance=ExtResource("4_aqk2v")]
 
-[node name="HP" type="Label" parent="." unique_id=22104067]
-z_index = 1
+[node name="HP" type="Control" parent="." unique_id=932027243]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 6.0
 offset_top = 5.0
-offset_right = 53.0
-offset_bottom = 32.0
+offset_right = 46.0
+offset_bottom = 45.0
+
+[node name="Text" type="Label" parent="HP" unique_id=22104067]
+z_index = 1
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 27.0
 theme_override_fonts/font = ExtResource("5_dwbse")
-text = "HP: "
+text = "HP: 20"
+
+[node name="ColorRect" type="ColorRect" parent="HP" unique_id=1091112485]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 6.0
+offset_right = 146.0
+offset_bottom = 16.0
 
 [node name="Game_Over" type="Control" parent="." unique_id=2081144268]
 visible = false
